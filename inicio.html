@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Hardware</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-transform: uppercase;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Inventario de Dispositivos Hardware</h1>
+    
+    <div id="contenedor-tabla"></div>
+
+    <script>
+        // Función para cargar el JSON y generar la tabla
+        async function cargarInventario() {
+            const contenedor = document.getElementById('contenedor-tabla');
+
+            try {
+                // Realizamos la petición fetch al archivo JSON
+                // Nota: Asegúrate de que 'inventario.json' esté en la misma carpeta
+                const respuesta = await fetch('inventario.json');
+                
+                if (!respuesta.ok) {
+                    throw new Error('No se pudo cargar el archivo JSON');
+                }
+
+                const dispositivos = await respuesta.json();
+
+                // Creamos el elemento tabla
+                let tablaHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tipo</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Precio ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                // Recorremos los datos y generamos las filas
+                dispositivos.forEach(item => {
+                    tablaHTML += `
+                        <tr>
+                            <td>${item.id}</td>
+                            <td>${item.tipo}</td>
+                            <td>${item.marca}</td>
+                            <td>${item.modelo}</td>
+                            <td>${item.precio.toLocaleString('es-ES', { minimumFractionDigits: 2 })}</td>
+                        </tr>
+                    `;
+                });
+
+                tablaHTML += `
+                        </tbody>
+                    </table>
+                `;
+
+                // Inyectamos la tabla en el contenedor
+                contenedor.innerHTML = tablaHTML;
+
+            } catch (error) {
+                contenedor.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+                console.error('Error al cargar los datos:', error);
+            }
+        }
+
+        // Llamamos a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', cargarInventario);
+    </script>
+
+</body>
+</html>
