@@ -1,0 +1,4 @@
+1. Sincronización: Usamos 'git pull origin main' para descargar los cambios del compañero y 'git merge' para unirlos.
+2. Detección de errores: En JSON, un error de sintaxis detiene el script JS. En XML/XSLT, el navegador suele mostrar un error de procesado o una página sin formato.
+3. Comparativa: JSON es mejor para grandes volúmenes (10.000 dispositivos) por ser más ligero y permitir carga asíncrona y filtrado dinámico más eficiente.
+4. Control de versiones: Si ambos editamos index.html, ocurre un conflicto que debe resolverse manualmente eligiendo qué líneas mantener.
