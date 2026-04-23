@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "tipo": "Router",
+    "marca": "Cisco",
+    "modelo": "ISR 4331",
+    "precio": 2500.00
+  },
+  {
+    "id": 2,
+    "tipo": "Switch",
+    "marca": "Juniper",
+    "modelo": "EX2300-24T",
+    "precio": 1250.50
+  },
+  {
+    "id": 3,
+    "tipo": "Servidor",
+    "marca": "Dell",
+    "modelo": "PowerEdge R740",
+    "precio": 4800.00
+  },
+  {
+    "id": 4,
+    "tipo": "Firewall",
+    "marca": "Fortinet",
+    "modelo": "FortiGate 60F",
+    "precio": 650.00
+  },
+  {
+    "id": 5,
+    "tipo": "Punto de Acceso",
+    "marca": "Ubiquiti",
+    "modelo": "UniFi 6 Pro",
+    "precio": 199.99
+  }
+]
